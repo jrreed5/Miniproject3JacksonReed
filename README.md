@@ -18,7 +18,7 @@ A simple blog site with login information based on the flask documentation, twea
 
 ### Installing
 
-* CLone this Repository
+* Clone this Repository
 
 ### Executing program
 
