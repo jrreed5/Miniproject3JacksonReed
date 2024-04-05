@@ -40,4 +40,4 @@ flask --app flaskr run
 
 ## License
 
-see the LICENSE.md file for details
+see the LICENSE file for details
