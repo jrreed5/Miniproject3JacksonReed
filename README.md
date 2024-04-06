@@ -1,4 +1,4 @@
-# Miniproject3JacksonReed
+# Mini Project 3
 ### INF601 - Advanced Programming in Python
 ### Jackson Reed
 ### Mini Project 3
@@ -23,11 +23,11 @@ A simple blog site with login information based on the flask documentation, twea
 * Set up and run a Python venv and CD into repository clone
 * Run the following command to initialize the database:
 ```
-flask --app flaskr init-db
+flask --app blogsite init-db
 ```
 * Once Database is initialized, run this command:
 ```
-flask --app flaskr run
+flask --app blogsite run
 ```
 
 

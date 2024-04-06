@@ -9,7 +9,7 @@ from flask import (
 )
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from flaskr.db import get_db
+from blogsite.db import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -36,7 +36,7 @@ def register():
             except db.IntegrityError:
                 error = f"User {username} is already registered."
             else:
-                return redirect(url_for("auth.login"))
+                flash('Registration successful!')
 
         flash(error)
 
@@ -64,7 +64,7 @@ def login():
             session['user_id'] = user['id']
             return redirect(url_for('index'))
 
-        flash(error)
+
 
     return render_template('auth/login.html')
 
