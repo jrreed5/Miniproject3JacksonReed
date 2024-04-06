@@ -3,8 +3,6 @@
 ### Jackson Reed
 ### Mini Project 3
 
-Simple overview of use/purpose.
-
 ## Description
 
 A simple blog site with login information based on the flask documentation, tweaked to include other aspects of the modern web.
