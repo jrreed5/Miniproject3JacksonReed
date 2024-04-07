@@ -22,9 +22,9 @@ def register():
         error = None
 
         if not username:
-            error = 'Username is required.'
+            flash('Username is required.')
         elif not password:
-            error = 'Password is required.'
+            flash('Password is required.')
 
         if error is None:
             try:
@@ -34,11 +34,10 @@ def register():
                 )
                 db.commit()
             except db.IntegrityError:
-                error = f"User {username} is already registered."
+                flash(f"User {username} is already registered.")
             else:
+                success = True
                 flash('Registration successful!')
-
-        flash(error)
 
     return render_template('auth/register.html')
 
@@ -56,15 +55,15 @@ def login():
 
         if user is None:
             error = 'Incorrect username.'
+            flash('Incorrect username.')
         elif not check_password_hash(user['password'], password):
             error = 'Incorrect password.'
+            flash('Incorrect password.')
 
         if error is None:
             session.clear()
             session['user_id'] = user['id']
             return redirect(url_for('index'))
-
-
 
     return render_template('auth/login.html')
 

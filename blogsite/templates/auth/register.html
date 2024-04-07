@@ -4,20 +4,6 @@
   <h1>{% block title %}Register{% endblock %}</h1>
 {% endblock %}
 
-{% block script %}
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script>
-    document.getElementById('registerButton').addEventListener('click', function() {
-      $('#myModal').modal('show');
-      setTimeout(function() {
-        window.location.href = "/login";
-      }, 2000);
-    });
-  </script>
-{% endblock %}
-
 {% block content %}
   <form method="post">
     <label for="username">Username (Max 20 Chars.)</label>
@@ -27,19 +13,35 @@
     <input type="submit" value="Register" id="registerButton">
   </form>
   <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Registration Complete</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <a>Please log in using the information presented.</a>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Understood</button>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Registration Complete</h1>
+        </div>
+        <div class="modal-body">
+          <a>Please log in using the information presented.</a>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="Understood">Understood</button>
+        </div>
       </div>
     </div>
   </div>
-  </div>
+\\ I am not sure what exactly I am doing wrong here, it should display correctly, but I can't get it to trigger.
+{% block script %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        {% if success %}
+          $(document).ready(function() {
+            $('#myModal').modal('show');
+            $('#Understood').click(function() {
+              window.location.href = "/login";
+            });
+          });
+        {% endif %}
+    </script>
+{% endblock %}
+
 {% endblock %}
